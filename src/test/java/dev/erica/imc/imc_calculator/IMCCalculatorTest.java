@@ -18,7 +18,7 @@ public class IMCCalculatorTest {
 
     @Test
     @DisplayName("Test para clasificar el resultado según la tabla que establece los rangos")
-    public void testIMCClasificator() {
+    public void testIMCClassificator() {
         double imc1 = 15;
         double imc2 = 16;
         double imc3 = 18;
@@ -27,6 +27,7 @@ public class IMCCalculatorTest {
         double imc6 = 33;
         double imc7 = 37;
         double imc8 = 45;
+        double imc9 = 99;
 
         assertThat(IMCCalculator.classificateIMC(imc1), equalTo("Delgadez severa"));
         assertThat(IMCCalculator.classificateIMC(imc2), equalTo("Delgadez moderada"));
@@ -36,5 +37,6 @@ public class IMCCalculatorTest {
         assertThat(IMCCalculator.classificateIMC(imc6), equalTo("Obesidad leve"));
         assertThat(IMCCalculator.classificateIMC(imc7), equalTo("Obesidad moderada"));
         assertThat(IMCCalculator.classificateIMC(imc8), equalTo("Obesidad mórbida"));
+        assertThat(IMCCalculator.classificateIMC(imc9), equalTo("Clasificación no definida"));
     }
 }

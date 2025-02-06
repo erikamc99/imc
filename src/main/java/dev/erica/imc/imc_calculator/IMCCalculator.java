@@ -10,7 +10,11 @@ public class IMCCalculator {
     }
 
     public static String classificateIMC(double imc) {
-        int grade = (imc < 16) ? 0 : (imc < 17) ? 1 : (imc < 18.5) ? 2 : (imc < 25) ? 3 : (imc < 30) ? 4 : (imc < 35) ? 5 : (imc < 40) ? 6 : 7;
+        if (imc == -1) {
+            return "No se puede clasificar debido a la altura y el peso proporcionados.";
+        }
+
+        int grade = (imc < 16) ? 0 : (imc < 17) ? 1 : (imc < 18.5) ? 2 : (imc < 25) ? 3 : (imc < 30) ? 4 : (imc < 35) ? 5 : (imc < 40) ? 6 : (imc < 70) ? 7 : -1;
 
         return switch(grade){
             case 0 -> "Delgadez severa";
@@ -21,7 +25,7 @@ public class IMCCalculator {
             case 5 -> "Obesidad leve";
             case 6 -> "Obesidad moderada";
             case 7 -> "Obesidad mórbida";
-            default -> "No se puede clasificar debida a la altura y el peso proporcionados.";
+            default -> "Clasificación no definida";
         };
     }
 }
