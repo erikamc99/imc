@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: dev.erica.imc.AppTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.472 s <<< FAILURE! - in dev.erica.imc.AppTest
+dev.erica.imc.AppTest.testIMCNormal  Time elapsed: 0.352 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: is "================================================================================================\n[35mCALCULADORA IMC PARA ADULTOS [0m*\n[31m*Si tiene alguna condición que pueda afectar al cálculo, por favor consulte con su médico.[0m\n================================================================================================\n[96mIngrese su peso en kilogramos:[0m\n[96mIngrese su estatura en metros:[0m\nSu IMC es: 22,86. Clasificación: Peso normal[0m\n"
+     but: was " \n================================================================================================\n[35mCALCULADORA IMC PARA ADULTOS [0m*\n[91m*Si tiene alguna condición que pueda afectar al cálculo, por favor consulte con su médico.[0m\n================================================================================================\n[96mIngrese su peso en kilogramos:[0m\n[96mIngrese su estatura en metros:[0m\nSu IMC es: 22,86. Clasificación: [32mPeso normal[0m\n"
+	at dev.erica.imc.AppTest.testIMCNormal(AppTest.java:42)
+

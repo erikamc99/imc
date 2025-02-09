@@ -1,13 +1,13 @@
 package dev.erica.imc.imc_calculator;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.closeTo;
 import static org.hamcrest.Matchers.equalTo;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 public class IMCCalculatorTest {
     @Test
@@ -33,9 +33,9 @@ public class IMCCalculatorTest {
         ByteArrayOutputStream errorMessage = new ByteArrayOutputStream();
         System.setOut(new PrintStream(errorMessage));
 
-        IMCCalculator.calculateIMC(20, 1.8);
+        IMCCalculator.calculateIMC(20, 1.2);
 
-        assertThat(errorMessage.toString().trim(), equalTo("Valores inválidos, por favor consulte con su médico para un correcto cálculo si mide menos de 1,40 metros."));
+        assertThat(errorMessage.toString().trim(), equalTo("[31mValores inválidos, por favor consulte con su médico para un correcto cálculo si mide menos de 1,40 metros.\u001B[0m"));
         System.setOut(System.out);
     }
 
@@ -52,15 +52,15 @@ public class IMCCalculatorTest {
         double imc8 = 45;
         double imc9 = 99;
 
-        assertThat(IMCCalculator.classificateIMC(imc1), equalTo("Delgadez severa"));
-        assertThat(IMCCalculator.classificateIMC(imc2), equalTo("Delgadez moderada"));
-        assertThat(IMCCalculator.classificateIMC(imc3), equalTo("Delgadez leve"));
-        assertThat(IMCCalculator.classificateIMC(imc4), equalTo("Peso normal"));
-        assertThat(IMCCalculator.classificateIMC(imc5), equalTo("Sobrepeso"));
-        assertThat(IMCCalculator.classificateIMC(imc6), equalTo("Obesidad leve"));
-        assertThat(IMCCalculator.classificateIMC(imc7), equalTo("Obesidad moderada"));
-        assertThat(IMCCalculator.classificateIMC(imc8), equalTo("Obesidad mórbida"));
-        assertThat(IMCCalculator.classificateIMC(imc9), equalTo("Clasificación no definida"));
-        assertThat(IMCCalculator.classificateIMC(-1), equalTo("No se puede clasificar debido a la altura y el peso proporcionados."));
+        assertThat(IMCCalculator.classificateIMC(imc1), equalTo("\033[31mDelgadez severa\u001B[0m"));
+        assertThat(IMCCalculator.classificateIMC(imc2), equalTo("\u001B[38;5;214mDelgadez moderada\u001B[0m"));
+        assertThat(IMCCalculator.classificateIMC(imc3), equalTo("\033[38;2;255;255;153mDelgadez leve\u001B[0m"));
+        assertThat(IMCCalculator.classificateIMC(imc4), equalTo("\033[32mPeso normal\u001B[0m"));
+        assertThat(IMCCalculator.classificateIMC(imc5), equalTo("\033[38;2;255;255;153mSobrepeso\u001B[0m"));
+        assertThat(IMCCalculator.classificateIMC(imc6), equalTo("\033[33mObesidad leve\u001B[0m"));
+        assertThat(IMCCalculator.classificateIMC(imc7), equalTo("\u001B[38;5;214mObesidad moderada\u001B[0m"));
+        assertThat(IMCCalculator.classificateIMC(imc8), equalTo("\033[31mObesidad mórbida\u001B[0m"));
+        assertThat(IMCCalculator.classificateIMC(imc9), equalTo("\033[91mClasificación no definida, por favor consulte con su médico.\u001B[0m"));
+        assertThat(IMCCalculator.classificateIMC(-1), equalTo("\033[31mNo se puede clasificar debido a la altura y el peso proporcionados.\u001B[0m"));
     }
 }
