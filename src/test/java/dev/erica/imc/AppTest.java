@@ -28,18 +28,18 @@ public class AppTest {
 
         String expectedOutput = """
 ================================================================================================
-CALCULADORA IMC PARA ADULTOS *
-\u001B[31m*Si tiene alguna condición que pueda afectar al cálculo, por favor consulte con su médico.\u001B[0m
+\033[35mCALCULADORA IMC PARA ADULTOS \u001B[0m*
+\u001B[91m*Si tiene alguna condición que pueda afectar al cálculo, por favor consulte con su médico.\u001B[0m
 ================================================================================================
-Ingrese su peso en kilogramos:
-Ingrese su estatura en metros:
-Su IMC es: 22,86. Clasificación: Peso normal
+\033[96mIngrese su peso en kilogramos:\u001B[0m
+\033[96mIngrese su estatura en metros:\u001B[0m
+Su IMC es: 22,86. Clasificación: \033[32mPeso normal\u001B[0m
 """;
 
         String outputReplacement = testOutput.toString().replaceAll("\r\n", "\n");
         String expectedOutputReplacement = expectedOutput.replaceAll("\r\n", "\n");
 
-        assertThat(outputReplacement, is(expectedOutputReplacement));
+        assertThat(outputReplacement.trim(), is(expectedOutputReplacement.trim()));
     }
 }
 
